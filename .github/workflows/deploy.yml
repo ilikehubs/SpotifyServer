@@ -4,12 +4,41 @@ on:
   push:
     branches: [main]
 
+env:
+  IMAGE: ghcr.io/${{ github.repository_owner }}/spotify-manager
+
 jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.IMAGE }}:latest
+            ${{ env.IMAGE }}:${{ github.sha }}
+
   deploy:
+    needs: build-and-push
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to server via SSH
+      - name: Pull and restart on server
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_HOST }}
@@ -18,18 +47,7 @@ jobs:
           script: |
             set -e
             cd /opt/spotify-manager
-
-            echo "── Pulling latest code ──"
-            git pull origin main
-
-            echo "── Installing dependencies ──"
-            npm ci
-
-            echo "── Building ──"
-            npm run build
-
-            echo "── Restarting app ──"
-            pm2 reload ecosystem.config.js --env production --update-env
-
-            echo "── Done ──"
-            pm2 status spotify-manager
+            echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            docker compose pull
+            docker compose up -d --remove-orphans
+            docker image prune -f

@@ -30,7 +30,7 @@ app.use('/api/setlistfm', setlistfmRoutes);
 
 // In production the backend serves the built frontend
 if (isProd) {
-  const frontendDist = path.resolve(__dirname, '../../../frontend/dist');
+  const frontendDist = path.resolve(__dirname, '../../frontend/dist');
   app.use(express.static(frontendDist));
   // SPA fallback — let React Router handle client-side routes
   app.get('*', (_req, res) => res.sendFile(path.join(frontendDist, 'index.html')));
