@@ -1,0 +1,218 @@
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.crumb {
+  font-size: 13px;
+  color: #b3b3b3;
+}
+
+.crumbActive {
+  font-size: 13px;
+  color: #1db954;
+  font-weight: 600;
+}
+
+.sep {
+  color: #404040;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hint {
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.searchRow {
+  display: flex;
+  gap: 12px;
+  max-width: 480px;
+}
+
+.searchRow input {
+  flex: 1;
+}
+
+.primaryBtn {
+  background: #1db954;
+  color: #000;
+  padding: 8px 20px;
+  border-radius: 24px;
+  white-space: nowrap;
+}
+
+.backBtn {
+  background: transparent;
+  color: #b3b3b3;
+  padding: 0;
+  font-size: 13px;
+  align-self: flex-start;
+}
+
+.backBtn:hover {
+  color: #fff;
+  opacity: 1;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 640px;
+}
+
+.listItem {
+  background: #181818;
+  border-radius: 8px;
+  padding: 12px 16px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: background 0.2s;
+}
+
+.listItem:hover:not(:disabled) {
+  background: #282828;
+  opacity: 1;
+}
+
+.listItem:disabled {
+  opacity: 0.4;
+}
+
+.itemName {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.itemSub {
+  font-size: 12px;
+  color: #b3b3b3;
+}
+
+.nameRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 480px;
+}
+
+.nameRow label {
+  font-size: 13px;
+  color: #b3b3b3;
+}
+
+.trackList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 720px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.trackRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: #181818;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.trackRow:hover {
+  background: #242424;
+}
+
+.trackRow.skipped {
+  opacity: 0.35;
+}
+
+.trackRow.noMatch {
+  border-left: 3px solid #e74c3c;
+}
+
+.trackIndex {
+  font-size: 12px;
+  color: #b3b3b3;
+  width: 24px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.trackInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.trackName {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trackMatch {
+  font-size: 12px;
+  color: #1db954;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.noMatchLabel {
+  font-size: 12px;
+  color: #e74c3c;
+}
+
+.skipLabel {
+  font-size: 12px;
+  color: #b3b3b3;
+  flex-shrink: 0;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  min-height: 40vh;
+  text-align: center;
+}
+
+.spotifyLink {
+  background: #1db954;
+  color: #000;
+  padding: 10px 24px;
+  border-radius: 24px;
+  font-weight: 700;
+  font-size: 14px;
+}
